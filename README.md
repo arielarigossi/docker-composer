@@ -6,25 +6,25 @@ Many of those are well known services like PostgresSQL, MySQL and so on, althoug
 I get time to write about them. They all are amazing projects and deserve a word spreading job to make more people know about them.
 
 
-1)AppSmith:
+1) AppSmith:
 
 2) Autopsy-backend:
 
-3)
+3) Baserow:
 
-4)
+4) Directus:
 
-5)
+5) Draw.io:
 
-6)
+6) Duplicati:
 
-7)
+7) Home-assistant
 
-8)
+8) Metabase:
 
-9)
+9) Motor-admin
 
-10)
+10) MySQL
 
 11)
 
