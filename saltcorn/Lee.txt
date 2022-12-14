@@ -1,0 +1,2 @@
+psql -h localhost -d saltcorn -U saltcorn -p 5432 -a -q -f docker-entrypoint-initdb.sql
+

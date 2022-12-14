@@ -1,0 +1,12 @@
+ 
+1) After finishing deploying the docker-compose.yml without any warnings run this to create first template profile for admin
+user:
+
+docker-compose exec server npm run db:seed:prod
+
+Initial Credentials:
+
+- email: `dev@tooljet.io`
+- password: `password`
+
+

@@ -1,0 +1,7 @@
+
+pihole -a -p
+
+
+Adlists:
+https://github.com/kboghdady/youTube_ads_4_pi-hole
+

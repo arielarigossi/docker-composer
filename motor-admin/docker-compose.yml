@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    image: 'motoradmin/motoradmin:latest'
+    ports:
+      - '3001:3000'
+    volumes:
+      - '.:/app'
+    environment:
+      DB_CLIENT: 'pg'
+      DB_HOST: '192.168.32.2'
+      DB_PORT: '5432'
+      DB_DATABASE: 'motoradmin'
+      DB_USER: 'motoradmin'
+      DB_PASSWORD: 'motoradmin'
+  
+networks:
+  default:
+    name: docker-ufie
+    external: true

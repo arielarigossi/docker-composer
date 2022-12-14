@@ -1,0 +1,48 @@
+# start up with 'docker-compose up -d' to start in background
+# update images with 'docker-compose pull'
+# this assumes that you have a sibling directory to this file called 'config' that contains all of the config for these services
+# you can reference 'sabnzbd' 'radarr' or 'sonarr' from inside the containers (in the apps) to reference the other containers. no need to deal with IPs or hostnames
+# remember that docker is isolated from the rest of your filesystem. you need to add volumes to the entries
+# in order to give the processes access to them. so if you have multiple target directories for TV or Movies,
+# then make sure you add each one that you want radarr/sonarr/sabnzbd to see.
+
+version: '3'
+services:
+  sabnzbd:
+    image: linuxserver/sabnzbd
+    ports:
+      - "8080:8080" # port mapping
+    volumes:
+      - "./config/sabnzbd:/config" # sab config directory
+      - "/storage/Downloads/complete:/downloads" # completed directory for downloads. this contains the category directories
+      - "/downloads/incomplete:/incomplete-downloads" # "temp" directory for downloads
+    environment:
+      TZ: UTC
+      PUID: 501 # set to UID of your user
+      PGID: 501 # set to GID of your user
+
+  radarr:
+    image: linuxserver/radarr
+    ports:
+      - "7878:7878" # port mapping
+    volumes:
+      - "./config/radarr:/config" # config directory for radarr
+      - "/storage/Downloads/complete:/downloads" # completed downloads directory from sab
+      - "/storage/Movies:/storage/Movies" # where radarr will copy your movies. add as many of these as you need
+    environment:
+      TZ: UTC
+      PUID: 501 # set this to the UID of your user
+      PGID: 501 # set this to the GID of your user
+
+  sonarr:
+    image: linuxserver/sonarr
+    ports:
+      - "8989:8989" # port mapping
+    volumes:
+      - "./config/sonarr:/config" # sonarr config dir
+      - "/storage/Downloads/complete:/downloads" # your completed downloads directory from sab
+      - "/storage/TV:/storage/TV" # where it will copy your files when done. add as many of these as you need
+    environment:
+      TZ: UTC
+      PUID: 501 # set this to the UID of your user
+      PGID: 501 # set this to the GID of your user

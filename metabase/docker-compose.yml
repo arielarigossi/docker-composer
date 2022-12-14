@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    metabase:
+        volumes:
+            - /home/ariel/docker/metabase/docker-data/:/metabase
+        ports:
+            - 3003:3000
+        # original docker image
+        # image: metabase/metabase
+        # my docker image with the default users
+        image: truecharts/metabase
+        restart: always
+networks:
+  default:
+    name: docker-ufie
+    external: true

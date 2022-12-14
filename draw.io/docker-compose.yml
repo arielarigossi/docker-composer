@@ -1,0 +1,23 @@
+# This compose file adds diagrams.net (ex draw.io) to your stack
+version: '3.5'
+services:
+  drawio:
+    image: truecharts/drawio
+    container_name: drawio
+    restart: unless-stopped
+    ports:
+      - 4080:8080
+      - 4443:8443
+    environment:
+      # PUBLIC_DNS: domain
+      # ORGANISATION_UNIT: unit
+      # ORGANISATION: org
+      CITY: corrientes
+      STATE: corrientes
+      COUNTRY_CODE: AR
+    # healthcheck:
+     # test: ["CMD-SHELL", "curl -f http://domain:8080 || exit 1"]
+     # interval: 1m30s
+     # timeout: 10s
+     # retries: 5
+     # start_period: 10s

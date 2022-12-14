@@ -1,0 +1,19 @@
+version: '3'
+services:
+  solr:
+    container_name: autopsy-solr
+    image: solr
+    ports:
+     - "8983:8983"
+    volumes:
+      - data:/var/solr
+    command:
+      - solr-precreate
+      - gettingstarted
+volumes:
+  data:
+
+networks:
+  default:
+    name: docker-autopsy
+    external: true

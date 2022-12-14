@@ -1,0 +1,23 @@
+---
+version: "3"
+services:
+  duplicati:
+    image: linuxserver/duplicati:latest
+    container_name: duplicati
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Argentina/Buenos_Aires
+      - CLI_ARGS= #optional
+    volumes:
+      - </path/to/appdata/config>:/config
+      - </path/to/backups>:/backups
+      - </path/to/source>:/source
+    ports:
+      - 8200:8200
+    restart: unless-stopped
+networks:
+  default:
+    name: docker-ufie
+    external: true
+

@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  saltcorn-app:
+    image: saltcorn/saltcorn
+    container_name: saltcorn
+    command: "serve"
+    restart: always
+    ports: #not needed if using traefik
+      - "3000:3000"
+    environment:
+      - SALTCORN_SESSION_SECRET=s3cr3t
+      - PGHOST=192.168.32.2
+      - PGUSER=saltcorn
+      - PGDATABASE=saltcorn
+      - PGPASSWORD=password
+     
+networks:
+  default:
+    name: docker-ufie
+    external: true

@@ -1,0 +1,25 @@
+version: "3"
+services:
+  nocodb:
+    image: "nocodb/nocodb:latest"
+    ports:
+      - "8083:8080"
+    restart: always
+    volumes:
+      - "nc_data:/usr/app/data"
+    environment:
+      MYSQL_HOST: 192.168.32.7
+      MYSQL_DATABASE: nocodb
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: nocodb
+#    below line shows how to change charset and collation
+#    uncomment it if necessary
+#    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+volumes:
+  nc_data: {}
+
+networks:
+  default:
+    name: docker-ufie
+    external: true

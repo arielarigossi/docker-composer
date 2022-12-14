@@ -1,0 +1,18 @@
+# Appsmith 
+version: "3"
+
+services:
+  appsmith:
+    image: index.docker.io/appsmith/appsmith-ce
+    container_name: appsmith
+    ports:
+      - "6080:80"
+      - "6443:443"
+    volumes:
+      - ./stacks:/appsmith-stacks
+    restart: unless-stopped
+networks:
+  default:
+    name: docker-ufie
+    external: true
+

@@ -1,0 +1,14 @@
+version: "3.4"
+services:
+  baserow:
+    container_name: baserow
+    image: baserow/baserow:1.13.1
+    environment:
+      BASEROW_PUBLIC_URL: 'http://phenom.dpto:5080'
+    ports:
+      - "5080:80"
+      - "5443:443"
+    volumes:
+      - baserow_data:/baserow/data
+volumes:
+  baserow_data:

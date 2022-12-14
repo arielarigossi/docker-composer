@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  server:
+    tty: true
+    stdin_open: true
+    image: tooljet/tooljet-ce:latest
+    restart: always
+    # env_file: .env
+    ports:
+      - 10.0.0.7:4080:80
+    environment:
+      SERVE_CLIENT: "true"
+      PORT: "80"
+      TOOLJET_HOST: localhost:4080
+      #  LOCKBOX_MASTER_KEY=replace_with_lockbox_master_key
+      #  SECRET_KEY_BASE=replace_with_secret_key_base
+      SECRET_KEY_BASE: s2c5r3t3
+      # DATABASE CONFIG
+      ORM_LOGGING: all
+      PG_DB: tooljet
+      PG_USER: tooljet
+      PG_HOST: 192.168.32.2
+      PG_PASS: tooljet
+ 
+    command: npm run start:prod
+networks:
+  default:
+    name: docker-ufie
+    external: true
+volumes:
+  certs:
+  logs:
+  fallbackcerts:
